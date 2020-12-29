@@ -24,7 +24,7 @@ class HomePage extends StatelessWidget {
                               "https://www.codemate.com/wp-content/uploads/2016/02/flutter-logo-round.png"))),
                 ),
                 Text(
-                  "عرفان نادری",
+                  "حساب کاربری",
                   style: TextStyle(
                     fontWeight: FontWeight.w700,
                     fontSize: 16.0
