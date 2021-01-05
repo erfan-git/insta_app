@@ -46,7 +46,7 @@ class ProfilePage extends StatelessWidget {
               ),
             ),
             Padding(
-              padding: const EdgeInsets.fromLTRB(16.0,36.0, 16.0, 16.0),
+              padding: const EdgeInsets.fromLTRB(16.0, 36.0, 16.0, 16.0),
               child: Center(
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -120,7 +120,7 @@ class ProfilePage extends StatelessWidget {
       ),
       Container(
         height: 140,
-        padding: EdgeInsets.fromLTRB(8,0,8,8),
+        padding: EdgeInsets.fromLTRB(8, 0, 8, 8),
         child: Column(
           children: [
             Container(
@@ -146,7 +146,7 @@ class ProfilePage extends StatelessWidget {
               ),
             ),
             Padding(
-              padding: const EdgeInsets.only(top:8.0),
+              padding: const EdgeInsets.only(top: 8.0),
               child: Container(
                 height: 30.0,
                 width: 470,
@@ -156,17 +156,65 @@ class ProfilePage extends StatelessWidget {
                   'ویرایش پروفایل',
                   textAlign: TextAlign.center,
                   style: TextStyle(
-                    fontWeight: FontWeight.w500,fontSize: 10,
+                    fontWeight: FontWeight.w500,
+                    fontSize: 10,
                   ),
                 ),
                 decoration: BoxDecoration(
                   shape: BoxShape.rectangle,
                   borderRadius: BorderRadius.all(Radius.circular(5)),
-                  border: Border.all(color: Colors.grey[400],style: BorderStyle.solid),
+                  border: Border.all(
+                      color: Colors.grey[400], style: BorderStyle.solid),
                 ),
               ),
             ),
-
+            Container(
+              height: 50,
+              width: 400,
+              child: Padding(
+                padding: const EdgeInsets.only(top: 8.0, bottom: 8),
+                child: ListView.builder(
+                  scrollDirection: Axis.horizontal,
+                  itemCount: 10,
+                  itemBuilder: (context, index) {
+                    return Stack(
+                      // moshakhas kardan mogheeat roye ham gharar giri
+                      alignment: Alignment.bottomRight,
+                      children: <Widget>[
+                        Container(
+                          width: 40.0,
+                          height: 40.0,
+                          margin: const EdgeInsets.symmetric(horizontal: 8.0),
+                          decoration: BoxDecoration(
+                            shape: BoxShape.circle,
+                            image: DecorationImage(
+                              fit: BoxFit.cover,
+                              image: NetworkImage(
+                                  "https://www.codemate.com/wp-content/uploads/2016/02/flutter-logo-round.png"),
+                            ),
+                          ),
+                        ),
+                        index == 0
+                            ? Positioned(
+                                right: 3.0,
+                                bottom: 0.0,
+                                child: CircleAvatar(
+                                  backgroundColor: Colors.blueAccent,
+                                  radius: 10.0,
+                                  child: Icon(
+                                    Icons.add,
+                                    color: Colors.white,
+                                    size: 14.0,
+                                  ),
+                                ),
+                              )
+                            : Container()
+                      ],
+                    );
+                  },
+                ),
+              ),
+            ),
           ],
         ),
       )
