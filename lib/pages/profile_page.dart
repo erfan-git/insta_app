@@ -164,9 +164,6 @@ class ProfilePage extends StatelessWidget {
                   borderRadius: BorderRadius.all(Radius.circular(5)),
                   border: Border.all(color: Colors.grey[400],style: BorderStyle.solid),
                 ),
-
-
-
               ),
             ),
           ],
