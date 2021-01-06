@@ -3,7 +3,9 @@ import 'package:flutter/material.dart';
 
 class ProfilePage extends StatelessWidget {
   var profile = Column(
+    mainAxisSize: MainAxisSize.max,
     crossAxisAlignment: CrossAxisAlignment.stretch,
+    mainAxisAlignment: MainAxisAlignment.end,
     children: [
       Container(
         height: 120.0,
@@ -122,6 +124,7 @@ class ProfilePage extends StatelessWidget {
         height: 140,
         padding: EdgeInsets.fromLTRB(8, 0, 8, 8),
         child: Column(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             Container(
               alignment: Alignment.centerRight,
@@ -168,66 +171,67 @@ class ProfilePage extends StatelessWidget {
                 ),
               ),
             ),
-            Container(
-              height: 50,
-              width: 400,
-              child: Padding(
-                padding: const EdgeInsets.only(top: 8.0, bottom: 8),
-                child: ListView.builder(
-                  scrollDirection: Axis.horizontal,
-                  itemCount: 10,
-                  itemBuilder: (context, index) {
-                    return Stack(
-                      // moshakhas kardan mogheeat roye ham gharar giri
-                      alignment: Alignment.bottomRight,
-                      children: <Widget>[
-                        Container(
-                          width: 40.0,
-                          height: 40.0,
-                          margin: const EdgeInsets.symmetric(horizontal: 8.0),
-                          decoration: BoxDecoration(
-                            shape: BoxShape.circle,
-                            image: DecorationImage(
-                              fit: BoxFit.cover,
-                              image: NetworkImage(
-                                  "https://www.codemate.com/wp-content/uploads/2016/02/flutter-logo-round.png"),
-                            ),
-                          ),
-                        ),
-                        index == 0
-                            ? Positioned(
-                                right: 3.0,
-                                bottom: 0.0,
-                                child: CircleAvatar(
-                                  backgroundColor: Colors.blueAccent,
-                                  radius: 10.0,
-                                  child: Icon(
-                                    Icons.add,
-                                    color: Colors.white,
-                                    size: 14.0,
-                                  ),
-                                ),
-                              )
-                            : Container()
-                      ],
-                    );
-                  },
-                ),
-              ),
-            ),
+
           ],
         ),
       )
     ],
   );
 
+  var highlight =
+  Container(
+    height: 110,
+    width: 500,
+    child: Padding(
+      padding: const EdgeInsets.all(8.0),
+      child: ListView.builder(
+        scrollDirection: Axis.horizontal,
+        itemCount: 10,
+        itemBuilder: (context, index) {
+          return index == 10 ?
+          Container(
+            width: 55.0,
+            height: 55.0,
+            margin: const EdgeInsets.symmetric(horizontal: 8.0),
+            decoration: BoxDecoration(
+              shape: BoxShape.circle,
+              image: DecorationImage(
+                fit: BoxFit.cover,
+                image: NetworkImage(
+                    "https://www.codemate.com/wp-content/uploads/2016/02/flutter-logo-round.png"),
+              ),
+            ),
+          )
+              : Icon(Icons.add,color: Colors.black,semanticLabel: ,);
+        },
+      ),
+    ),
+  );
+
   @override
   Widget build(BuildContext context) {
     return ListView.builder(
-      itemCount: 100,
-      itemBuilder: (context, index) {
-        return index == 0 ? profile : Container();
-      },
-    );
+        itemCount: 100,
+        itemBuilder: (context, index) {
+          return base(index);
+        });
+  }
+
+  Widget base(int index) {
+    if (index == 0) {
+      return profile;
+    } else if (index == 1) {
+      return highlight;
+    } else {
+      Container(
+        height: 30,
+        width: 200,
+        decoration: BoxDecoration(
+          shape: BoxShape.rectangle,
+          borderRadius: BorderRadius.all(Radius.circular(5)),
+          border: Border.all(color: Colors.grey[400], style: BorderStyle.solid),
+        ),
+      );
+    }
   }
 }

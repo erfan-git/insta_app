@@ -41,6 +41,7 @@ class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      resizeToAvoidBottomPadding: false,
       appBar: appBar,
       bottomNavigationBar: Container(
         height: 50.0,
@@ -84,7 +85,7 @@ class _MyHomePageState extends State<MyHomePage> {
       ),
       body: children[currentPageName],
     );
-    ;
+
   }
 
   void changePage(String s) {
