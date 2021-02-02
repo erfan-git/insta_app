@@ -171,38 +171,61 @@ class ProfilePage extends StatelessWidget {
                 ),
               ),
             ),
-
           ],
         ),
       )
     ],
   );
 
-  var highlight =
-  Container(
-    height: 110,
-    width: 500,
+  // Container(
+  // width: 55.0,
+  // height: 55.0,
+  // margin: const EdgeInsets.symmetric(horizontal: 8.0),
+  // decoration: BoxDecoration(
+  // shape: BoxShape.circle,
+  // image: DecorationImage(
+  // fit: BoxFit.cover,
+  // image: NetworkImage(
+  // "https://www.codemate.com/wp-content/uploads/2016/02/flutter-logo-round.png"),
+  // ),
+  // ),
+  // ),
+
+  var highlight = Container(
+    height: 95,
+    width: 530,
     child: Padding(
       padding: const EdgeInsets.all(8.0),
       child: ListView.builder(
         scrollDirection: Axis.horizontal,
         itemCount: 10,
         itemBuilder: (context, index) {
-          return index == 10 ?
-          Container(
-            width: 55.0,
-            height: 55.0,
-            margin: const EdgeInsets.symmetric(horizontal: 8.0),
-            decoration: BoxDecoration(
-              shape: BoxShape.circle,
-              image: DecorationImage(
-                fit: BoxFit.cover,
-                image: NetworkImage(
-                    "https://www.codemate.com/wp-content/uploads/2016/02/flutter-logo-round.png"),
-              ),
-            ),
-          )
-              : Icon(Icons.add,color: Colors.black,semanticLabel: ,);
+          return index != 9
+              ? Container(
+                  width: 55.0,
+                  height: 55.0,
+                  margin: const EdgeInsets.symmetric(horizontal: 8.0),
+                  decoration: BoxDecoration(
+                    shape: BoxShape.circle,
+                    image: DecorationImage(
+                      fit: BoxFit.cover,
+                      image: NetworkImage(
+                          "https://www.codemate.com/wp-content/uploads/2016/02/flutter-logo-round.png"),
+                    ),
+                  ),
+                )
+              : Container(
+                  width: 55.0,
+                  height: 55.0,
+                  margin: const EdgeInsets.symmetric(horizontal: 8.0),
+                  child: Center(
+                    child: Icon(
+                      Icons.add_circle_outline,
+                      color: Colors.grey,
+                      size: 68,
+                    ),
+                  ),
+                );
         },
       ),
     ),
